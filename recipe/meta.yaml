@@ -7,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pydantic_cli-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pydantic_cli-{{ version }}.tar.gz
   sha256: 6e43a4e1ef04f95656a1ac291e71d928d759c4701262872115b56d57e2fcc880
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
   run:
     - pydantic <2,>=1.5
-    - python >=3.7
+    - python >={{ python_min }}
     # - shtab >=1.3.1
     # - pytest >=6.0.1
     # - mypy >=0.930
@@ -34,6 +34,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://github.com/mpkocher/pydantic-cli
