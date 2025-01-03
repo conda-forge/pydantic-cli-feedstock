@@ -19,7 +19,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
-    - hatch
+    - hatchling
   run:
     - pydantic >=2.8.2
     - python >={{ python_min }}
